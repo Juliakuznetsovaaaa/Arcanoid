@@ -1,37 +1,24 @@
 #include "Rectangle.hpp"
 #include <iostream>
-using namespace std;
-Paddle::Paddle(float mX, float mY)
-{
-	shape.setSize(Vector2f(100, 10));
-	shape.setPosition(mX, mY);
+//using namespace std;
+
+
+void Paddle::init(float paddleWidth){
+	unsigned int windowWidth = 600;
+	shape.setSize(Vector2f(paddleWidth, 10));
+	shape.setPosition((windowWidth- paddleWidth)/2, 730);
 	shape.setFillColor(Color::Red);
-	
 }
 
-void Paddle::movePaddele()
-{
-	double spin = 0.1;
-	
-	float paddleVelocity = 8.5f;
-	if (Keyboard::isKeyPressed(Keyboard::Right)) {
-		if (shape.getPosition().x < 300) {
-			shape.move(spin, 0);
-			
-		}
-	}
-	if (Keyboard::isKeyPressed(Keyboard::Left))
-		if (shape.getPosition().x > 0) {
-			shape.move(-spin, 0);
-		}
-							
-}
 
-Brick::Brick(float mX, float mY, const Color& color)
+
+Brick::Brick(float mX, float mY, const Color& color, int mLevel, int mBonusYype)
 {
 	shape.setPosition(mX, mY);
 	shape.setSize(Vector2f(50, 50));
 	shape.setFillColor(color);
+	level = mLevel;
+	bonusType = mBonusYype;
 }
 
 
